@@ -1,0 +1,15 @@
+name: CML Workflow
+on: [push]
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9' # Specify a compatible Python version
+      - uses: iterative/setup-cml@v1
+      - name: Train model
+        run: |
+          pip install -r requirements.txt
+          python -u model.py
